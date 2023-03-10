@@ -1,115 +1,827 @@
 <div class="game-board container text-center">
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'A1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'A2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'A3'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B3'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C3'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #oneone
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'one'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #onetwo
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'two'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #onethree
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'three'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #onefour
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'four'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #onefive
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'five'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #onesix
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'six'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #oneseven
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'seven'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #oneeight
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'eight'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #onenine
+      class="col"
+      value=""
+      [row]="'one'"
+      [col]="'nine'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'A4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'A5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'A6'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B6'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C6'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #twoone
+      class="col"
+      value=""
+      value=""
+      [row]="'two'"
+      [col]="'one'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twotwo
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'two'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twothree
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'three'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twofour
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'four'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twofive
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'five'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twosix
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'six'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twoseven
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'seven'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twoeight
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'eight'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #twonine
+      class="col"
+      value=""
+      [row]="'two'"
+      [col]="'nine'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'A7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'A8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'A9'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'B9'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'C9'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #threeone
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'one'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threetwo
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'two'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threethree
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'three'"
+      [box]="'one'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threefour
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'four'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threefive
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'five'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threesix
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'six'"
+      [box]="'two'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threeseven
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'seven'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threeeight
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'eight'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #threenine
+      class="col"
+      value=""
+      [row]="'three'"
+      [col]="'nine'"
+      [box]="'three'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'D1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'D2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'D3'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E3'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F3'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #fourone
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'one'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fourtwo
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'two'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fourthree
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'three'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fourfour
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'four'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fourfive
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'five'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #foursix
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'six'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fourseven
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'seven'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #foureight
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'eight'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fournine
+      class="col"
+      value=""
+      [row]="'four'"
+      [col]="'nine'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'D4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'D5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'D6'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E6'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F6'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #fiveone
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'one'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fivetwo
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'two'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fivethree
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'three'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fivefour
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'four'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fivefive
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'five'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fivesix
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'six'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fiveseven
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'seven'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fiveeight
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'eight'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #fivenine
+      class="col"
+      value=""
+      [row]="'five'"
+      [col]="'nine'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'D7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'D8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'D9'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'E9'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'F9'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #sixone
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'one'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixtwo
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'two'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixthree
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'three'"
+      [box]="'four'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixfour
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'four'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixfive
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'five'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixsix
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'six'"
+      [box]="'five'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixseven
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'seven'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixeight
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'eight'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sixnine
+      class="col"
+      value=""
+      [row]="'six'"
+      [col]="'nine'"
+      [box]="'six'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'G1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'G2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'G3'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H3'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I1'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I2'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I3'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #sevenone
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'one'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #seventwo
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'two'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #seventhree
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'three'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sevenfour
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'four'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sevenfive
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'five'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sevensix
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'six'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sevenseven
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'seven'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #seveneight
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'eight'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #sevennine
+      class="col"
+      value=""
+      [row]="'seven'"
+      [col]="'nine'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'G4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'G5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'G6'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H6'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I4'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I5'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I6'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #eightone
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'one'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eighttwo
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'two'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eightthree
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'three'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eightfour
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'four'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eightfive
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'five'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eightsix
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'six'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eightseven
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'seven'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eighteight
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'eight'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #eightnine
+      class="col"
+      value=""
+      [row]="'eight'"
+      [col]="'nine'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
   <div class="row">
-    <app-square class="col" [value]="'X'" [id]="'G7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'G8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'G9'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'H9'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I7'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I8'" (handleClick)="squareClick($event)"></app-square>
-    <app-square class="col" [value]="'X'" [id]="'I9'" (handleClick)="squareClick($event)"></app-square>
+    <app-square
+      #nineone
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'one'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #ninetwo
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'two'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #ninethree
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'three'"
+      [box]="'seven'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #ninefour
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'four'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #ninefive
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'five'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #ninesix
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'six'"
+      [box]="'eight'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #nineseven
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'seven'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #nineeight
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'eight'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      #ninenine
+      class="col"
+      value=""
+      [row]="'nine'"
+      [col]="'nine'"
+      [box]="'nine'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
   </div>
 </div>
 
 <div class="digit-selection container text-center">
   <div class="row">
-    <div class="col">1</div>
-    <div class="col">2</div>
-    <div class="col">3</div>
-    <div class="col">4</div>
-    <div class="col">5</div>
-    <div class="col">6</div>
-    <div class="col">7</div>
-    <div class="col">8</div>
-    <div class="col">9</div>
+    <app-square
+      class="col"
+      [value]="'1'"
+      [id]="'set1'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'2'"
+      [id]="'set2'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'3'"
+      [id]="'set3'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'4'"
+      [id]="'set4'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'5'"
+      [id]="'set5'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'6'"
+      [id]="'set6'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'7'"
+      [id]="'set7'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'8'"
+      [id]="'set8'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+    <app-square
+      class="col"
+      [value]="'9'"
+      [id]="'set9'"
+      (handleClick)="squareClick($event)"
+    ></app-square>
+  </div>
+</div>
+
+<div *ngIf="matchmaking" class="message-box container text-center">
+  <div *ngIf="selectedBoardSquare">
+    <div>
+      You have selected the board square on row:
+      {{ selectedBoardSquare.row }} and col: {{ selectedBoardSquare.col }}
+    </div>
+    <div>It currently has a value of {{ selectedBoardSquare.value }}</div>
+    <br />
+    <div>Select a digit to update the square's value!</div>
+  </div>
+
+  <div *ngIf="selectedDigitSquare">
+    <div>You have selected the digit {{ selectedDigitSquare.value }}</div>
+    <br />
+    <div>Select a square to update with this digit!</div>
   </div>
 </div>
