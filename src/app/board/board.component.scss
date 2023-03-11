@@ -4,16 +4,9 @@
   justify-content: center;
 
   .col {
-    cursor: pointer;
     height: 50px;
     max-width: 50px;
     padding: 0;
-    transition: all 0.125s ease-in-out;
-
-    &:hover {
-      background-color: $white;
-      color: $black;
-    }
   }
 }
 

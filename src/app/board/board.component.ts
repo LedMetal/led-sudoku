@@ -1,12 +1,22 @@
-import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  Renderer2,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { HelperService } from 'src/services/helper.service';
 import { SquareComponent } from '../square/square.component';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BoardComponent {
+export class BoardComponent implements AfterViewInit {
   @ViewChild('oneone') oneone: ElementRef<SquareComponent>;
   @ViewChild('onetwo') onetwo: ElementRef<SquareComponent>;
   @ViewChild('onethree') onethree: ElementRef<SquareComponent>;
@@ -98,11 +108,22 @@ export class BoardComponent {
   @ViewChild('set8') set8: ElementRef<SquareComponent>;
   @ViewChild('set9') set9: ElementRef<SquareComponent>;
 
+  board: number[][];
   matchmaking: boolean = false;
   selectedBoardSquare: SquareComponent | null;
   selectedDigitSquare: SquareComponent | null;
 
-  constructor(private render: Renderer2) {}
+  constructor(
+    private helper: HelperService,
+    private render: Renderer2,
+    private changeRef: ChangeDetectorRef
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.board = this.helper.generateBoard();
+    this.fillGameBoard();
+    this.changeRef.detectChanges();
+  }
 
   squareClick(square: SquareComponent) {
     if (!this.matchmaking) {
@@ -199,5 +220,20 @@ export class BoardComponent {
 
   getElementRef(varName: string): SquareComponent {
     return this[varName as keyof BoardComponent] as SquareComponent;
+  }
+
+  fillGameBoard() {
+    for (let i = 0; i < this.board.length; i++) {
+      let row = this.board[i];
+
+      for (let j = 0; j < row.length; j++) {
+        let val = row[j] === 0 ? '' : row[j];
+        let rowParam = this.helper.translateNumberToString(i + 1);
+        let colParam = this.helper.translateNumberToString(j + 1);
+        let square = this.getElementRef(`${rowParam}${colParam}`);
+
+        this.render.setProperty(square, 'value', val);
+      }
+    }
   }
 }
