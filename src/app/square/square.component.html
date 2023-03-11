@@ -1,3 +1,3 @@
-<div class="square" (click)="squareClick()">
-    <span>{{ value }}</span>
+<div class="square" [ngClass]="{ selected: selected }" (click)="squareClick()">
+  <span>{{ value }}</span>
 </div>

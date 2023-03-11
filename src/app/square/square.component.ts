@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-square',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SquareComponent {
   @Input() id: string;
+  @Input() selected: boolean;
   @Input() box: string;
   @Input() col: string;
   @Input() row: string;

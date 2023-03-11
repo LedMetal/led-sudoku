@@ -88,6 +88,15 @@ export class BoardComponent {
   @ViewChild('nineseven') nineseven: ElementRef<SquareComponent>;
   @ViewChild('nineeight') nineeight: ElementRef<SquareComponent>;
   @ViewChild('ninenine') ninenine: ElementRef<SquareComponent>;
+  @ViewChild('set1') set1: ElementRef<SquareComponent>;
+  @ViewChild('set2') set2: ElementRef<SquareComponent>;
+  @ViewChild('set3') set3: ElementRef<SquareComponent>;
+  @ViewChild('set4') set4: ElementRef<SquareComponent>;
+  @ViewChild('set5') set5: ElementRef<SquareComponent>;
+  @ViewChild('set6') set6: ElementRef<SquareComponent>;
+  @ViewChild('set7') set7: ElementRef<SquareComponent>;
+  @ViewChild('set8') set8: ElementRef<SquareComponent>;
+  @ViewChild('set9') set9: ElementRef<SquareComponent>;
 
   matchmaking: boolean = false;
   selectedBoardSquare: SquareComponent | null;
@@ -101,27 +110,90 @@ export class BoardComponent {
 
       if (square.id) {
         this.selectedDigitSquare = square;
+
+        let el = this.getElementRef(square.id);
+        this.render.setProperty(el, 'selected', true);
       } else {
         this.selectedBoardSquare = square;
+
+        let el = this.getElementRef(`${square.row}${square.col}`);
+        this.render.setProperty(el, 'selected', true);
       }
     } else {
-      if (this.selectedBoardSquare) {
+      if (
+        this.selectedBoardSquare &&
+        !square.id &&
+        this.selectedBoardSquare.row === square.row &&
+        this.selectedBoardSquare.col === square.col
+      ) {
+        this.matchmaking = false;
+        this.selectedBoardSquare = null;
+        this.render.setProperty(
+          this.getElementRef(`${square.row}${square.col}`),
+          'selected',
+          false
+        );
+      } else if (this.selectedBoardSquare && !square.id) {
+        this.render.setProperty(
+          this.getElementRef(
+            `${this.selectedBoardSquare.row}${this.selectedBoardSquare.col}`
+          ),
+          'selected',
+          false
+        );
+        this.render.setProperty(
+          this.getElementRef(`${square.row}${square.col}`),
+          'selected',
+          true
+        );
+        this.selectedBoardSquare = square;
+      } else if (
+        this.selectedDigitSquare &&
+        square.id &&
+        this.selectedDigitSquare.id === square.id
+      ) {
+        this.matchmaking = false;
+        this.selectedDigitSquare = null;
+        this.render.setProperty(
+          this.getElementRef(square.id),
+          'selected',
+          false
+        );
+      } else if (this.selectedDigitSquare && square.id) {
+        this.render.setProperty(
+          this.getElementRef(this.selectedDigitSquare.id),
+          'selected',
+          false
+        );
+        this.render.setProperty(
+          this.getElementRef(square.id),
+          'selected',
+          true
+        );
         this.selectedDigitSquare = square;
       } else {
-        this.selectedBoardSquare = square;
-      }
+        if (this.selectedBoardSquare) {
+          this.selectedDigitSquare = square;
+        } else {
+          this.selectedBoardSquare = square;
+        }
 
-      this.render.setProperty(
-        this.getElementRef(
+        let elBoard = this.getElementRef(
           `${this.selectedBoardSquare.row}${this.selectedBoardSquare.col}`
-        ),
-        'value',
-        this.selectedDigitSquare?.value
-      );
+        );
+        let elDigit = this.getElementRef(this.selectedDigitSquare!.id);
+        this.render.setProperty(
+          elBoard,
+          'value',
+          this.selectedDigitSquare?.value
+        );
+        this.render.setProperty(elBoard, 'selected', false);
+        this.render.setProperty(elDigit, 'selected', false);
 
-      this.matchmaking = false;
-      this.selectedBoardSquare = null;
-      this.selectedDigitSquare = null;
+        this.matchmaking = false;
+        this.selectedBoardSquare = null;
+        this.selectedDigitSquare = null;
+      }
     }
   }
 
