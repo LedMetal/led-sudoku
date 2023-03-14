@@ -107,6 +107,7 @@ export class BoardComponent implements AfterViewInit {
   @ViewChild('set7') set7: ElementRef<SquareComponent>;
   @ViewChild('set8') set8: ElementRef<SquareComponent>;
   @ViewChild('set9') set9: ElementRef<SquareComponent>;
+  @ViewChild('del') del: ElementRef<SquareComponent>;
 
   board: number[][];
   matchmaking: boolean = false;
@@ -202,15 +203,20 @@ export class BoardComponent implements AfterViewInit {
         let elBoard = this.getElementRef(
           `${this.selectedBoardSquare.row}${this.selectedBoardSquare.col}`
         );
+        let elBoard_row = this.helper.translateStringToNumber(elBoard.row)!;
+        let elBoard_col = this.helper.translateStringToNumber(elBoard.col)!;
         let elDigit = this.getElementRef(this.selectedDigitSquare!.id);
-        this.render.setProperty(
-          elBoard,
-          'value',
-          this.selectedDigitSquare?.value
-        );
+
+        if (this.board[elBoard_row - 1][elBoard_col - 1] === 0) {
+          this.render.setProperty(
+            elBoard,
+            'value',
+            this.selectedDigitSquare?.value
+          );
+        }
+
         this.render.setProperty(elBoard, 'selected', false);
         this.render.setProperty(elDigit, 'selected', false);
-
         this.matchmaking = false;
         this.selectedBoardSquare = null;
         this.selectedDigitSquare = null;
