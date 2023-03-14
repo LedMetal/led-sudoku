@@ -741,26 +741,3 @@
     ></app-square>
   </div>
 </div>
-
-<div *ngIf="matchmaking" class="message-box container text-center">
-  <div *ngIf="selectedBoardSquare">
-    <div>
-      You have selected the board square on row:
-      {{ selectedBoardSquare.row }} and col: {{ selectedBoardSquare.col }}
-    </div>
-    <div *ngIf="selectedBoardSquare.value !== ''">
-      It currently has a value of {{ selectedBoardSquare.value }}
-    </div>
-    <div *ngIf="selectedBoardSquare.value === ''">
-      It does not currently have a value.
-    </div>
-    <br />
-    <div>Select a digit to update the square's value!</div>
-  </div>
-
-  <div *ngIf="selectedDigitSquare">
-    <div>You have selected the digit {{ selectedDigitSquare.value }}</div>
-    <br />
-    <div>Select a square to update with this digit!</div>
-  </div>
-</div>
