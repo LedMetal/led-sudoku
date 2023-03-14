@@ -5,7 +5,7 @@ import { ISquare } from 'src/models/square';
   providedIn: 'root',
 })
 export class HelperService {
-  board: number[][] = [
+  generatedBoard: number[][] = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -16,10 +16,11 @@ export class HelperService {
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
+  solution: ISquare[][];
 
   constructor() {}
 
-  generateBoard(): number[][] {
+  generateBoard() {
     const minNumOfClues = 24;
     let numOfClues;
 
@@ -42,7 +43,7 @@ export class HelperService {
           randomValue = Math.floor(Math.random() * 9) + 1;
         } while (!this.validateSquareValue(randomRow, randomCol, randomValue));
 
-        this.board[randomRow][randomCol] = randomValue;
+        this.generatedBoard[randomRow][randomCol] = randomValue;
         numOfClues++;
 
         if (randomRow !== randomCol) {
@@ -56,18 +57,16 @@ export class HelperService {
             !this.validateSquareValue(mirrorRow, mirrorCol, mirrorRandomValue)
           );
 
-          this.board[mirrorRow][mirrorCol] = mirrorRandomValue;
+          this.generatedBoard[mirrorRow][mirrorCol] = mirrorRandomValue;
 
           numOfClues++;
         }
       } while (numOfClues < minNumOfClues);
     } while (!this.isSolvable());
-
-    return this.board;
   }
 
   isSolvable(): boolean {
-    let boardObj: ISquare[][] = this.mapBoardToBoardObj(this.board);
+    let boardObj: ISquare[][] = this.mapBoardToBoardObj(this.generatedBoard);
     let rowIndex = 0;
     let colIndex = 0;
     let solved: boolean = false;
@@ -77,7 +76,6 @@ export class HelperService {
       let square = boardObj[rowIndex][colIndex];
 
       if (!square.clue) {
-        // Update the availableValues when moving ahead to a new square
         if (!backtracking) {
           square.availableValues = this.getAvailableValues(
             rowIndex,
@@ -90,8 +88,6 @@ export class HelperService {
         let newValue = square.availableValues.pop();
 
         if (!newValue) {
-          // There are no more availableValues for this square
-
           square.value = 0;
           backtracking = true;
 
@@ -122,6 +118,7 @@ export class HelperService {
             } else {
               // If we're here, the board is solved!
               solved = true;
+              this.solution = boardObj;
               console.log('SOLVED at ', new Date().getTime());
             }
           }
@@ -152,6 +149,7 @@ export class HelperService {
             } else {
               // If we're here, the board is solved!
               solved = true;
+              this.solution = boardObj;
               console.log('SOLVED at ', new Date().getTime());
             }
           }
@@ -163,7 +161,7 @@ export class HelperService {
   }
 
   resetBoard(): void {
-    this.board = [
+    this.generatedBoard = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -183,28 +181,11 @@ export class HelperService {
     board?: number[][]
   ): number[] {
     let availableValues = [];
-    let validInRow: boolean;
-    let validInCol: boolean;
-    let validInBox: boolean;
     let gameBoard: number[][] =
-      typeof board !== 'undefined' ? board : this.board;
+      typeof board !== 'undefined' ? board : this.generatedBoard;
 
     for (let option = 1; option < 10; option++) {
       if (option !== value) {
-        // // Validate that option is not in its row
-        // validInRow = this.validateValueInRow(row, option, gameBoard);
-
-        // // Validate that option is not in its col
-        // validInCol = this.validateValueInCol(col, option, gameBoard);
-
-        // // Validate that option is not in its box
-        // validInBox = this.validateValueInBox(row, col, option, gameBoard);
-
-        // // If all three are true, then add to availableValues array
-        // if (validInRow && validInCol && validInBox) {
-        //   availableValues.push(option);
-        // }
-
         if (this.validateSquareValue(row, col, option, gameBoard)) {
           availableValues.push(option);
         }
@@ -221,7 +202,7 @@ export class HelperService {
     board?: any[][]
   ): boolean {
     let gameBoard: number[][] =
-      typeof board !== 'undefined' ? board : this.board;
+      typeof board !== 'undefined' ? board : this.generatedBoard;
 
     // Validate value in row
     if (!this.validateValueInRow(row, value, gameBoard)) {
@@ -242,7 +223,7 @@ export class HelperService {
   }
 
   validateEmptySquare(row: number, col: number): boolean {
-    return this.board[row][col] === 0;
+    return this.generatedBoard[row][col] === 0;
   }
 
   validateValueInRow(row: number, value: number, board: number[][]): boolean {

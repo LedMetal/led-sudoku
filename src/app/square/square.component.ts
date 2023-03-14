@@ -16,6 +16,7 @@ export class SquareComponent implements OnInit {
   @Output() handleClick = new EventEmitter<SquareComponent>();
 
   isEvenBox: boolean;
+  available: boolean;
 
   constructor(private helper: HelperService) {}
 

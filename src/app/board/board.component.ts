@@ -109,7 +109,17 @@ export class BoardComponent implements AfterViewInit {
   @ViewChild('set9') set9: ElementRef<SquareComponent>;
   @ViewChild('del') del: ElementRef<SquareComponent>;
 
-  board: number[][];
+  myBoard: number[][] = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ];
   matchmaking: boolean = false;
   selectedBoardSquare: SquareComponent | null;
   selectedDigitSquare: SquareComponent | null;
@@ -121,13 +131,23 @@ export class BoardComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.board = this.helper.generateBoard();
+    this.helper.generateBoard();
+    this.mapGeneratedBoardToMyBoard();
     this.fillGameBoard();
     this.changeRef.detectChanges();
   }
 
   squareClick(square: SquareComponent) {
-    if (!this.matchmaking) {
+    let isClue = false;
+
+    if (!square.id) {
+      isClue =
+        this.helper.generatedBoard[
+          this.helper.translateStringToNumber(square.row)! - 1
+        ][this.helper.translateStringToNumber(square.col)! - 1] !== 0;
+    }
+
+    if (!this.matchmaking && !isClue) {
       this.matchmaking = true;
 
       if (square.id) {
@@ -140,8 +160,19 @@ export class BoardComponent implements AfterViewInit {
 
         let el = this.getElementRef(`${square.row}${square.col}`);
         this.render.setProperty(el, 'selected', true);
+
+        let availableValues = this.helper.getAvailableValues(
+          this.helper.translateStringToNumber(square.row)! - 1,
+          this.helper.translateStringToNumber(square.col)! - 1,
+          square.value ? parseInt(square.value) : 0,
+          this.myBoard
+        );
+        availableValues.forEach((value) => {
+          let ref = this.getElementRef(`set${value}`);
+          ref.available = true;
+        });
       }
-    } else {
+    } else if (!isClue) {
       if (
         this.selectedBoardSquare &&
         !square.id &&
@@ -150,6 +181,7 @@ export class BoardComponent implements AfterViewInit {
       ) {
         this.matchmaking = false;
         this.selectedBoardSquare = null;
+        this.clearAvailableDigits();
         this.render.setProperty(
           this.getElementRef(`${square.row}${square.col}`),
           'selected',
@@ -168,7 +200,19 @@ export class BoardComponent implements AfterViewInit {
           'selected',
           true
         );
+
         this.selectedBoardSquare = square;
+        this.clearAvailableDigits();
+        let availableValues = this.helper.getAvailableValues(
+          this.helper.translateStringToNumber(square.row)! - 1,
+          this.helper.translateStringToNumber(square.col)! - 1,
+          square.value ? parseInt(square.value) : 0,
+          this.myBoard
+        );
+        availableValues.forEach((value) => {
+          let ref = this.getElementRef(`set${value}`);
+          ref.available = true;
+        });
       } else if (
         this.selectedDigitSquare &&
         square.id &&
@@ -207,12 +251,18 @@ export class BoardComponent implements AfterViewInit {
         let elBoard_col = this.helper.translateStringToNumber(elBoard.col)!;
         let elDigit = this.getElementRef(this.selectedDigitSquare!.id);
 
-        if (this.board[elBoard_row - 1][elBoard_col - 1] === 0) {
+        if (
+          this.helper.generatedBoard[elBoard_row - 1][elBoard_col - 1] === 0
+        ) {
           this.render.setProperty(
             elBoard,
             'value',
             this.selectedDigitSquare?.value
           );
+          this.myBoard[elBoard_row - 1][elBoard_col - 1] = this
+            .selectedDigitSquare?.value
+            ? parseInt(this.selectedDigitSquare?.value)
+            : 0;
         }
 
         this.render.setProperty(elBoard, 'selected', false);
@@ -220,7 +270,14 @@ export class BoardComponent implements AfterViewInit {
         this.matchmaking = false;
         this.selectedBoardSquare = null;
         this.selectedDigitSquare = null;
+        this.clearAvailableDigits();
       }
+    }
+  }
+
+  clearAvailableDigits() {
+    for (let i = 1; i < 10; i++) {
+      this.getElementRef(`set${i}`).available = false;
     }
   }
 
@@ -229,8 +286,8 @@ export class BoardComponent implements AfterViewInit {
   }
 
   fillGameBoard() {
-    for (let i = 0; i < this.board.length; i++) {
-      let row = this.board[i];
+    for (let i = 0; i < this.myBoard.length; i++) {
+      let row = this.myBoard[i];
 
       for (let j = 0; j < row.length; j++) {
         let val = row[j] === 0 ? '' : row[j];
@@ -239,6 +296,18 @@ export class BoardComponent implements AfterViewInit {
         let square = this.getElementRef(`${rowParam}${colParam}`);
 
         this.render.setProperty(square, 'value', val);
+      }
+    }
+  }
+
+  mapGeneratedBoardToMyBoard() {
+    for (let i = 0; i < this.helper.generatedBoard.length; i++) {
+      const row = this.helper.generatedBoard[i];
+
+      for (let j = 0; j < row.length; j++) {
+        const value = row[j];
+
+        this.myBoard[i][j] = value;
       }
     }
   }
