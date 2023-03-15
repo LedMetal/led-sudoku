@@ -741,3 +741,24 @@
     ></app-square>
   </div>
 </div>
+
+<div class="icons-container container">
+  <div class="new-game icon-container" (click)="handleNewGameClick()">
+    <fa-icon [icon]="faPlusCircle" size="3x"></fa-icon>
+    <span>New Game</span>
+  </div>
+
+  <div class="icon-container" (click)="handleHintsClick()">
+    <app-square
+      #toggleHints
+      class="toggle-hints"
+      [available]="true"
+    ></app-square>
+    <span>Hints: {{ hintsOn ? "ON" : "OFF" }}</span>
+  </div>
+
+  <div class="restart-game icon-container" (click)="handleRestartClick()">
+    <fa-icon [icon]="faRotate" size="3x"></fa-icon>
+    <span>Restart Game</span>
+  </div>
+</div>

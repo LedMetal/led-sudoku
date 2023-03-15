@@ -27,6 +27,7 @@ export class HelperService {
     do {
       console.log('GENERATING at ', new Date().getTime());
 
+      this.resetBoard();
       numOfClues = 0;
 
       do {

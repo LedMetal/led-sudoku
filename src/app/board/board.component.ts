@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { HelperService } from 'src/services/helper.service';
 import { SquareComponent } from '../square/square.component';
+import { faRotate, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-board',
@@ -108,6 +109,7 @@ export class BoardComponent implements AfterViewInit {
   @ViewChild('set8') set8: ElementRef<SquareComponent>;
   @ViewChild('set9') set9: ElementRef<SquareComponent>;
   @ViewChild('del') del: ElementRef<SquareComponent>;
+  @ViewChild('toggleHints') toggleHints: ElementRef<SquareComponent>;
 
   myBoard: number[][] = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -123,6 +125,9 @@ export class BoardComponent implements AfterViewInit {
   matchmaking: boolean = false;
   selectedBoardSquare: SquareComponent | null;
   selectedDigitSquare: SquareComponent | null;
+  faRotate = faRotate;
+  faPlusCircle = faPlusCircle;
+  hintsOn: boolean = true;
 
   constructor(
     private helper: HelperService,
@@ -161,16 +166,18 @@ export class BoardComponent implements AfterViewInit {
         let el = this.getElementRef(`${square.row}${square.col}`);
         this.render.setProperty(el, 'selected', true);
 
-        let availableValues = this.helper.getAvailableValues(
-          this.helper.translateStringToNumber(square.row)! - 1,
-          this.helper.translateStringToNumber(square.col)! - 1,
-          square.value ? parseInt(square.value) : 0,
-          this.myBoard
-        );
-        availableValues.forEach((value) => {
-          let ref = this.getElementRef(`set${value}`);
-          ref.available = true;
-        });
+        if (this.hintsOn) {
+          let availableValues = this.helper.getAvailableValues(
+            this.helper.translateStringToNumber(square.row)! - 1,
+            this.helper.translateStringToNumber(square.col)! - 1,
+            square.value ? parseInt(square.value) : 0,
+            this.myBoard
+          );
+          availableValues.forEach((value) => {
+            let ref = this.getElementRef(`set${value}`);
+            ref.available = true;
+          });
+        }
       }
     } else if (!isClue) {
       if (
@@ -203,16 +210,19 @@ export class BoardComponent implements AfterViewInit {
 
         this.selectedBoardSquare = square;
         this.clearAvailableDigits();
-        let availableValues = this.helper.getAvailableValues(
-          this.helper.translateStringToNumber(square.row)! - 1,
-          this.helper.translateStringToNumber(square.col)! - 1,
-          square.value ? parseInt(square.value) : 0,
-          this.myBoard
-        );
-        availableValues.forEach((value) => {
-          let ref = this.getElementRef(`set${value}`);
-          ref.available = true;
-        });
+
+        if (this.hintsOn) {
+          let availableValues = this.helper.getAvailableValues(
+            this.helper.translateStringToNumber(square.row)! - 1,
+            this.helper.translateStringToNumber(square.col)! - 1,
+            square.value ? parseInt(square.value) : 0,
+            this.myBoard
+          );
+          availableValues.forEach((value) => {
+            let ref = this.getElementRef(`set${value}`);
+            ref.available = true;
+          });
+        }
       } else if (
         this.selectedDigitSquare &&
         square.id &&
@@ -286,8 +296,8 @@ export class BoardComponent implements AfterViewInit {
   }
 
   fillGameBoard() {
-    for (let i = 0; i < this.myBoard.length; i++) {
-      let row = this.myBoard[i];
+    for (let i = 0; i < this.helper.generatedBoard.length; i++) {
+      let row = this.helper.generatedBoard[i];
 
       for (let j = 0; j < row.length; j++) {
         let val = row[j] === 0 ? '' : row[j];
@@ -310,5 +320,32 @@ export class BoardComponent implements AfterViewInit {
         this.myBoard[i][j] = value;
       }
     }
+  }
+
+  handleNewGameClick() {
+    this.helper.generateBoard();
+    this.mapGeneratedBoardToMyBoard();
+    this.fillGameBoard();
+  }
+
+  handleHintsClick() {
+    let ref = this.getElementRef('toggleHints');
+    ref.available = !ref.available;
+    this.hintsOn = ref.available;
+  }
+
+  handleRestartClick() {
+    this.myBoard = [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ];
+    this.fillGameBoard();
   }
 }

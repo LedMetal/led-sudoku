@@ -13,10 +13,10 @@ export class SquareComponent implements OnInit {
   @Input() col: string;
   @Input() row: string;
   @Input() value: string;
+  @Input() available: boolean;
   @Output() handleClick = new EventEmitter<SquareComponent>();
 
   isEvenBox: boolean;
-  available: boolean;
 
   constructor(private helper: HelperService) {}
 

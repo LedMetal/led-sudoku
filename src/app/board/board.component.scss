@@ -84,6 +84,27 @@
   }
 }
 
-.message-box {
-  margin-top: 2rem;
+.icons-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  width: 500px;
+
+  .icon-container {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    .toggle-hints {
+      border: 1px solid $white;
+      height: 48px;
+      width: 48px;
+    }
+
+    span {
+      margin-top: 0.25rem;
+    }
+  }
 }
