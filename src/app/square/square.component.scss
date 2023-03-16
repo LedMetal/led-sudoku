@@ -30,5 +30,9 @@
 
   .value {
     font-size: 24px;
+
+    @media (max-width: 555px) {
+      font-size: 18px;
+    }
   }
 }

@@ -7,6 +7,11 @@
     height: 50px;
     max-width: 50px;
     padding: 0;
+
+    @media (max-width: 555px) {
+      height: 40px;
+      max-width: 40px;
+    }
   }
 }
 
@@ -87,10 +92,10 @@
 .icons-container {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  width: 500px;
+  max-width: 500px;
 
   .icon-container {
     align-items: center;
