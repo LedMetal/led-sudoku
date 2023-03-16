@@ -745,7 +745,12 @@
 <div class="icons-container container">
   <div class="new-game icon-container" (click)="handleNewGameClick()">
     <fa-icon [icon]="faPlusCircle" size="3x"></fa-icon>
-    <span>New Game</span>
+    <span>New</span>
+  </div>
+
+  <div class="restart-game icon-container" (click)="handleRestartClick()">
+    <fa-icon [icon]="faRotate" size="3x"></fa-icon>
+    <span>Restart</span>
   </div>
 
   <div class="icon-container" (click)="handleHintsClick()">
@@ -754,11 +759,18 @@
       class="toggle-hints"
       [available]="true"
     ></app-square>
-    <span>Hints: {{ hintsOn ? "ON" : "OFF" }}</span>
+    <span>Hints</span>
   </div>
 
-  <div class="restart-game icon-container" (click)="handleRestartClick()">
-    <fa-icon [icon]="faRotate" size="3x"></fa-icon>
-    <span>Restart Game</span>
+  <div class="restart-game icon-container" (click)="handleCheckClick()">
+    <fa-icon [icon]="faFlagCheckered" size="3x"></fa-icon>
+    <span>Check</span>
+  </div>
+</div>
+
+<div *ngIf="attempted" class="message-container container">
+  <div class="header-section text-center">
+    <h1 *ngIf="solved" class="display-6 text-success">SUCCESS! Play again!</h1>
+    <h1 *ngIf="!solved" class="display-6 text-danger">FAIL! Try again!</h1>
   </div>
 </div>

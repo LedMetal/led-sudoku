@@ -9,7 +9,11 @@ import {
 } from '@angular/core';
 import { HelperService } from 'src/services/helper.service';
 import { SquareComponent } from '../square/square.component';
-import { faRotate, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faRotate,
+  faPlusCircle,
+  faFlagCheckered,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-board',
@@ -127,7 +131,10 @@ export class BoardComponent implements AfterViewInit {
   selectedDigitSquare: SquareComponent | null;
   faRotate = faRotate;
   faPlusCircle = faPlusCircle;
+  faFlagCheckered = faFlagCheckered;
   hintsOn: boolean = true;
+  attempted: boolean = false;
+  solved: boolean = false;
 
   constructor(
     private helper: HelperService,
@@ -285,7 +292,7 @@ export class BoardComponent implements AfterViewInit {
     }
   }
 
-  clearAvailableDigits() {
+  clearAvailableDigits(): void {
     for (let i = 1; i < 10; i++) {
       this.getElementRef(`set${i}`).available = false;
     }
@@ -295,7 +302,7 @@ export class BoardComponent implements AfterViewInit {
     return this[varName as keyof BoardComponent] as SquareComponent;
   }
 
-  fillGameBoard() {
+  fillGameBoard(): void {
     for (let i = 0; i < this.helper.generatedBoard.length; i++) {
       let row = this.helper.generatedBoard[i];
 
@@ -310,7 +317,7 @@ export class BoardComponent implements AfterViewInit {
     }
   }
 
-  mapGeneratedBoardToMyBoard() {
+  mapGeneratedBoardToMyBoard(): void {
     for (let i = 0; i < this.helper.generatedBoard.length; i++) {
       const row = this.helper.generatedBoard[i];
 
@@ -322,19 +329,19 @@ export class BoardComponent implements AfterViewInit {
     }
   }
 
-  handleNewGameClick() {
+  handleNewGameClick(): void {
     this.helper.generateBoard();
     this.mapGeneratedBoardToMyBoard();
     this.fillGameBoard();
   }
 
-  handleHintsClick() {
+  handleHintsClick(): void {
     let ref = this.getElementRef('toggleHints');
     ref.available = !ref.available;
     this.hintsOn = ref.available;
   }
 
-  handleRestartClick() {
+  handleRestartClick(): void {
     this.myBoard = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -346,6 +353,13 @@ export class BoardComponent implements AfterViewInit {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
+    this.mapGeneratedBoardToMyBoard();
     this.fillGameBoard();
+  }
+
+  handleCheckClick() {
+    this.solved =
+      this.myBoard.toString() ===
+      this.helper.mapBoardObjToBoard(this.helper.solution).toString();
   }
 }
