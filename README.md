@@ -1,27 +1,31 @@
 # LedSudoku
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+## [LIVE](https://ledsudoku.abdulsadiq.com/)
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+_**LedSudoku**_ is a classic game of sudoku, a puzzle game played on a 9x9 grid. The game will start you off with a few numbers on the grid, but it's up to you to fill in the rest!
 
-## Code scaffolding
+The **RULES** are as follows:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- each **row** must have the numbers 1 through 9, without duplicates and without an exception
+- each **col** must have the numbers 1 through 9, without duplicates and without an exception
+- each of the nine **3 x 3** block group must have the numbers 1 through 9, without duplicates and without an exception
 
-## Build
+If you're up for the challenge, go to the [LedSudoku website](https://ledsudoku.abdulsadiq.com/) to play!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Development
 
-## Running unit tests
+I tackled the task of creating a sudoku game several years ago using C# in Unity to create a mobile game for Android devices. You can find that project here (keep in mind that was 7 years prior to the current day): [pseudo_ku](https://github.com/LedMetal/pseudo_ku)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This time around, I wanted to practice my Angular skills by switching to it. Admittedly with hindsight, perhaps Angular is a bit of an overkill for a relatively small scale application such as a sudoku game. However it was still a challenge writing the core engine for the game, particularly the solver function.
 
-## Running end-to-end tests
+Currently, _LedSudoku_ sits as a minimalistic game to play and keep playing, with new and unique game boards generated every time! However, I wish to come back to this in the future and possibly add new functionality.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Built With
 
-## Further help
+_Programming Language:_ **Angular**, **Typescript**, **SCSS**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Author
+
+[Abdul Sadiq](https://github.com/LedMetal)
